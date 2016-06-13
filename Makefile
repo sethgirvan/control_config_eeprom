@@ -38,10 +38,10 @@ $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
 
 
-$(BUILDDIR)/%.o: $(SRCDIR)/%.c $(BUILDIR)
+$(BUILDDIR)/%.o: $(BUILDDIR) $(SRCDIR)/%.c $(BUILDIR)
 	$(CC) $< -o $@ $(CFLAGS) $(CPPFLAGS)
 
-$(BUILDDIR)/%.o: $(SRCDIR)/%.cpp $(BUILDDIR)
+$(BUILDDIR)/%.o: $(BUILDDIR) $(SRCDIR)/%.cpp $(BUILDDIR)
 	$(CXX) $< -o $@ $(CXXFLAGS) $(CPPFLAGS)
 
 $(TARGET).eep: $(BUILDDIR)/$(TARGET).o
